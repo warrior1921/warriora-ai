@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Warriora</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+<section>
+  <section>
+   <div class="navbar">
+  <div class="logo">
+   
+    <img src="{{ url_for('static', filename='test.png') }}" alt="Description of image" class="logo" />
+
+    <h1 id="titu">ARRIORA</h1>
+  </div>
+  <div class="nav-links">
+    <a href="#">HOME</a>
+    <a href="#">ABOUT US</a>
+    <a href="#">LOGIN</a>
+    <a href="#">CONTACT US</a>
+  </div>
+
+
+</section>
+  <section>
+    <div class="video-container">
+  <video autoplay muted loop>
+    <source src="{{ url_for('static', filename='vv.mp4') }}" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+<!--H2 id="">WELCOME TO</H2-->
+</div>
+<h1 id="WELA">HI! I AM WARRIORA </h1>
+<p id="WELAS">an artificial intelligence assistant created by Vishesh Kannaujiya. I am a highly advanced <br>language model designed to assist and communicate with humans in a clear and concise <br> manner. I have been trained on a vast amount of text data,enabling me to provide <br> accurate and informative responses to a wide range of questions and topics. My <br> capabilities include generating human-like text,  answering questions, and even creating <br> content such as articles, emails, and chatbot conversations. I am constantly learning and <br> improving my abilities through machine learning algorithms and  natural language <br> processing techniques. My primary goal is to assist users by providing relevant and <br> helpful information, answering their questions, and completing tasks to the best of my <br> abilities. I am designed to brbe knowledgeable, accurate,  and efficient, and I strive to <br>maintain a professional and respectful tone in all of my interactions. Whether you need <br>
+  help with a specific task, require research on a particular topic, or simply want to engage <br>in a conversation, I am here to assist you.</p>
+  <button id="WELASS">READ MORE</button>
+  </section>
+
+
+
+  <section>
+    <div class="chat-container">
+      <div class="chat-header">Welcome to Warriora</div>
+      <div class="chat-box" id="chat-box">
+        {% if messages %}
+          {% for msg in messages %}
+            <div class="message {{ 'user-message' if msg.sender == 'user' else 'bot-message' }}">
+              {{ msg.text|replace('\n','<br>')|safe }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+
+      <form id="chat-form" class="input-area">
+        <input
+          type="text"
+          id="message-input"
+          placeholder="Type your message..."
+          required
+          autocomplete="off"
+        />
+        <button type="submit">Send</button>
+        <button type="button" id="stop-btn" disabled>Stop</button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const chatBox = document.getElementById("chat-box");
+      const form = document.getElementById("chat-form");
+      const input = document.getElementById("message-input");
+      const stopBtn = document.getElementById("stop-btn");
+
+      let typingInterval;
+      let currentText = "";
+      let currentIndex = 0;
+
+      // Convert **bold** to <strong>bold</strong>, \n to <br>
+      function convertMarkdown(text) {
+        return text
+          .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+          .replace(/\n/g, "<br>");
+      }
+
+      function appendMessage(text, sender) {
+        const div = document.createElement("div");
+        div.className = "message " + (sender === "user" ? "user-message" : "bot-message");
+        if (sender === "bot") {
+          // Initially empty for typing effect
+          div.innerHTML = "";
+        } else {
+          div.textContent = text;
+        }
+        chatBox.appendChild(div);
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }
+
+      function finishTyping() {
+        clearInterval(typingInterval);
+        stopBtn.disabled = true;
+        const lastMsg = chatBox.lastElementChild;
+        if (lastMsg) {
+          // Replace raw text with HTML version after typing
+          lastMsg.innerHTML = convertMarkdown(lastMsg.textContent);
+        }
+      }
+
+      function typeResponse(text) {
+        currentText = text;
+        currentIndex = 0;
+        stopBtn.disabled = false;
+
+        appendMessage("", "bot"); // Create empty bot message container
+
+        typingInterval = setInterval(() => {
+          if (currentIndex >= currentText.length) {
+            finishTyping();
+            return;
+          }
+          const lastMsg = chatBox.lastElementChild;
+
+          // Append next character as plain text
+          lastMsg.textContent += currentText[currentIndex];
+          currentIndex++;
+          chatBox.scrollTop = chatBox.scrollHeight;
+        }, 30);
+      }
+
+      function stopTyping() {
+        finishTyping();
+        const lastMsg = chatBox.lastElementChild;
+        if (lastMsg && currentIndex < currentText.length) {
+          lastMsg.textContent += currentText.slice(currentIndex);
+          currentIndex = currentText.length;
+          lastMsg.innerHTML = convertMarkdown(lastMsg.textContent);
+        }
+      }
+
+      stopBtn.addEventListener("click", stopTyping);
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const message = input.value.trim();
+        if (!message) return;
+
+        appendMessage(message, "user");
+
+        input.value = "";
+        stopBtn.disabled = true;
+
+        stopTyping(); // stop previous typing if any
+
+        fetch("/chat_api", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            typeResponse(data.reply);
+          })
+          .catch(() => {
+            appendMessage("Sorry, something went wrong.", "bot");
+          });
+      });
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+</body>
+</html>

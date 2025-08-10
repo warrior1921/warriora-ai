@@ -1,0 +1,259 @@
+.navbar {
+  display: flex;
+  
+  margin-top: 1%;
+   
+  background-color: white;
+   width: 100%;
+    z-index: 9999;
+  align-items: center;
+  justify-content: space-between; /* logo on left, links on right */
+  padding: 3px 6%;
+  box-sizing: border-box;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 1); /* more natural shadow */
+   border-color: #113D5C;
+  
+}
+.video-container {
+  z-index: 1;
+  position: relative;
+  width: 80%;       /* fits nicely */
+  margin: 2% auto;  /* centers horizontally */
+  overflow: hidden;
+  margin-left: 20%;
+}
+
+video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+
+
+
+section {
+  position: relative; /* anchor point for absolute children */
+}
+
+#WELA, #WELAS, #WELASS {
+  position: absolute;
+  z-index: 2;
+}
+@keyframes float {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-30px); }
+  100% { transform: translateY(0px); }
+}
+
+#WELA {
+  animation: glow-blues 2s ease-in-out infinite, float 5s ease-in-out infinite;
+  top: 1%;   
+  left: 5%;
+  color: rgb(0, 0, 0);
+  font-size: 5rem;
+  font-weight: bold;
+}
+
+#WELAS {
+  animation: float 5s ease-in-out infinite;
+  top: 30%;
+  left: 5%;
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#WELASS {
+  animation: glow-blue 2s ease-in-out infinite, float 5s ease-in-out infinite;
+  top: 90%;
+  left: 5%;
+  color: black;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes glow-blue {
+  0%, 100% {
+    box-shadow: 0 0 5px #00c3ff, 0 0 8px #00c2fd;
+  }
+  50% {
+    box-shadow: 0 0 20px #0077ff, 0 0 38px #0077ff;
+  }
+}
+@keyframes glow-blues {
+  0%, 100% {
+    text-shadow: 0 0 5px #00c3ff, 0 0 8px #00c2fd;
+  }
+  50% {
+    text-shadow: 0 0 20px #0077ff, 0 0 38px #0077ff;
+  }
+}
+.logo {
+  height: 80px;
+ 
+display: inline-block;
+display: flex;
+  
+}
+#titu {
+  margin-left: -4%;
+  margin-top: 6%;
+  font-size: 50px;
+}
+.nav-links {
+  display: flex;
+  gap: 30px;
+  margin: 0;
+}
+.nav-links a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+
+  font-family: Verdana;
+  font-size: 20px;
+  transition: color 0.3s;
+}
+.nav-links a:hover {
+  color: #113D5C;
+}
+
+
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden; /* Remove horizontal scroll */
+}
+
+.chat-container {
+  width: calc(100vw - 40px); /* 20px space on each side */
+  height: 100vh;
+  margin: 0 auto;            /* Center horizontally */
+  border: none;
+  display: flex;
+  flex-direction: column;
+  background: #f9f9f9;
+  box-sizing: border-box;
+  border-radius: 8px;        /* Back to rounded edges */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.chat-header {
+  padding: 15px 20px;
+  font-weight: 700;
+  font-size: 1.3rem;
+  background: #222;
+  color: white;
+  text-align: center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.chat-box {
+  flex: 1;
+  padding: 15px 20px;
+  overflow-y: auto;
+  background: white;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.message {
+  margin-bottom: 15px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.user-message {
+  background-color: #d1e7ff;
+  align-self: flex-end;
+}
+
+.bot-message {
+  background-color: #e5e5e5;
+  align-self: flex-start;
+}
+
+.input-area {
+  display: flex;
+  padding: 15px 20px;
+  background: #c6f4ff;
+  border-top: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.input-area input[type="text"] {
+  flex: 1;
+  padding: 14px 18px;
+  font-size: 1.1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.input-area button {
+  padding: 14px 22px;
+  margin-left: 12px;
+  background-color: #222;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.input-area button:hover {
+  background-color: #555;
+}
+
+
+/* Responsive adjustments */
+
+@media screen and (max-width: 768px) {
+  /* Hide navbar in mobile */
+   #WELA,
+  #WELAS,
+  #WELASS {
+    display: none;
+  }
+  .navbar {
+    display: none;
+  }
+
+  /* Full-width video for mobile */
+  .video-container {
+    display: none;
+  }
+
+  video {
+    display: none;
+  }
+
+  /* Make chatbot take more vertical space */
+  .chat-container {
+    width: 100%;
+    height: 90vh;
+    border-radius: 0;
+  }
+
+  /* Adjust chatbot input area */
+  .input-area input[type="text"] {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .input-area button {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+}

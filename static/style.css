@@ -154,7 +154,7 @@ html, body {
 
 .chat-box {
   flex: 1;
-  padding: 15px 20px;
+  padding: 20px 20px;
   overflow-y: auto;
   background: white;
   border-top: 1px solid #ccc;
@@ -163,13 +163,15 @@ html, body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1rem;
   line-height: 1.5;
+  width: 100%;
+  align-self: center;
 }
 
 .message {
   margin-bottom: 15px;
   padding: 10px 16px;
   border-radius: 12px;
-  max-width: 80%;
+  max-width: 100%;
   word-wrap: break-word;
 }
 
@@ -215,18 +217,29 @@ html, body {
 .input-area button:hover {
   background-color: #555;
 }
-
-
+ .sd {
+  font-size: 30px;
+ }
+.sds{
+   font-size: 30px;
+  }
 /* Responsive adjustments */
 
 @media screen and (max-width: 768px) {
+  
+ 
   /* Hide navbar in mobile */
    #WELA,
   #WELAS,
   #WELASS {
     display: none;
+    font-size: 0px;
   }
   .navbar {
+    display: none;
+  }
+  .sds{
+    width: 40px;
     display: none;
   }
 
@@ -238,7 +251,11 @@ html, body {
   video {
     display: none;
   }
-
+ .sd{
+height: 40px;
+ text-align: center;
+  font-size: 0px;
+ }
   /* Make chatbot take more vertical space */
   .chat-container {
     width: 100%;
@@ -256,4 +273,8 @@ html, body {
     padding: 10px 15px;
     font-size: 0.9rem;
   }
+  
+}
+.mc {
+  display: none;
 }

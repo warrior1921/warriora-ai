@@ -1,0 +1,105 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #fff;
+}
+
+/* Card Container */
+.container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 25px 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    width: 100%;
+    height: 600px;
+    max-height: 780px;
+    max-width: 480px; /* Instead of fixed width */
+    transition: all 0.3s ease;
+}
+.container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* Headings */
+h2 {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #ffdd57;
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 15px;
+}
+input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+input:focus {
+    outline: 2px solid #ffdd57;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #ffdd57;
+    color: #222;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 5px;
+}
+button:hover {
+    background: #ffc107;
+    transform: translateY(-1px);
+}
+
+/* Messages */
+.message {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 14px;
+}
+.error { color: #ff4d4d; }
+.success { color: #4dff4d; }
+
+/* Responsive Design */
+@media screen and (max-width: 768px){
+    body {
+        padding: 20px;
+    }
+    .container {
+        max-width: 100%;
+        padding: 25px;
+        border-radius: 10px;
+        height: 640px;
+    }
+    h2 {
+        font-size: 1.4rem;
+        color: #eeff00;
+    }
+    input, button {
+        font-size: 16px;
+        padding: 14px;
+    }
+}

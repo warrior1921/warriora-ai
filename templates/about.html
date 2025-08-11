@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Warriroa</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='stylee.css') }}" />
+</head>
+<body>
+<section>
+  <section>
+   <div class="navbar">
+  <div class="logo">
+    <img src="{{ url_for('static', filename='test.png') }}" alt="Description of image" class="logo" />
+    <h1 id="titu">ARRIORA</h1>
+  </div>
+  <div class="nav-links">
+    <a href="{{ url_for('home') }}">HOME</a>
+    <a href="{{ url_for('about') }}">ABOUT US</a>
+
+   
+    <a href="{{ url_for('logout') }}">LOGOUT</a>
+
+ 
+    <a href="#">CONTACT US</a>
+  </div>
+</section>
+
+    <div class="about-container">
+        <div class="about-image">
+            <img src="{{ url_for('static', filename='robo.png') }}" alt="About Warriora">
+        </div>
+
+        <div class="about-text">
+            <h1>About Warriora</h1>
+            <p>
+               I am an artificial intelligence assistant created by Vishesh Kannaujiya. I am a highly advanced language model designed to assist and communicate with humans in a clear and concise manner. I have been trained on a vast amount of text data,enabling me to provide accurate and informative responses to a wide range of questions and topics. My capabilities include generating human-like text,  answering questions, and even creating content such as articles, emails, and chatbot conversations. 
+            </p>
+            <p>I am constantly learning and improving my abilities through machine learning algorithms and  natural language processing techniques. My primary goal is to assist users by providing relevant and helpful information, answering their questions, and completing tasks to the best of my abilities. I am designed to brbe knowledgeable, accurate,  and efficient, and I strive to maintain a professional and respectful tone in all of my interactions. Whether you need 
+  help with a specific task, require research on a particular topic, or simply want to engage in a conversation, I am here to assist you.</p>
+           <a href="/" class="home-button">Go to Warriora</a>
+        </div>
+    </div>
+
+</body>
+</html>

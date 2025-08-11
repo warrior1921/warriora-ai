@@ -1,6 +1,6 @@
 .navbar {
   display: flex;
-  
+  flex-wrap: wrap;
   margin-top: 1%;
    
   background-color: white;
@@ -22,6 +22,16 @@
   overflow: hidden;
   margin-left: 20%;
 }
+.video-containers {
+  
+  position: absolute;
+  margin-top: -51%;
+  width: 44%;       /* fits nicely */
+  z-index: 9999;
+  overflow: hidden;
+  margin-left: 57%;
+}
+
 
 video {
   width: 100%;
@@ -48,7 +58,7 @@ section {
 
 #WELA {
   animation: glow-blues 2s ease-in-out infinite, float 5s ease-in-out infinite;
-  top: 1%;   
+  top: -4%;   
   left: 5%;
   color: rgb(0, 0, 0);
   font-size: 5rem;
@@ -57,7 +67,7 @@ section {
 
 #WELAS {
   animation: float 5s ease-in-out infinite;
-  top: 30%;
+  top: 20%;
   left: 5%;
   color: rgb(0, 0, 0);
   font-size: 20px;
@@ -65,8 +75,15 @@ section {
 }
 
 #WELASS {
+  background: #0077ff;
+    color: #222;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s ease;
   animation: glow-blue 2s ease-in-out infinite, float 5s ease-in-out infinite;
-  top: 90%;
+  top: 65%;
   left: 5%;
   color: black;
   font-size: 20px;
@@ -131,8 +148,9 @@ html, body {
 .chat-container {
   width: calc(100vw - 40px); /* 20px space on each side */
   height: 100vh;
-  margin: 0 auto;            /* Center horizontally */
+           /* Center horizontally */
   border: none;
+  margin-left: 2%;
   display: flex;
   flex-direction: column;
   background: #f9f9f9;
@@ -163,8 +181,8 @@ html, body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1rem;
   line-height: 1.5;
-  width: 100%;
-  align-self: center;
+  width: 58%;
+  align-self: self-start;
 }
 
 .message {
@@ -176,19 +194,23 @@ html, body {
 }
 
 .user-message {
-  background-color: #d1e7ff;
+  font-size: 25px;
+  background-color: #7bc5f7;
   align-self: flex-end;
 }
 
 .bot-message {
-  background-color: #e5e5e5;
+  background-color: #eeeaea;
+  font-size: 17px;
   align-self: flex-start;
 }
-
+hr {
+  color: #00c2fd;
+}
 .input-area {
   display: flex;
   padding: 15px 20px;
-  background: #c6f4ff;
+  background: #aedbf8;
   border-top: 1px solid #ccc;
   box-sizing: border-box;
 }
@@ -223,6 +245,26 @@ html, body {
 .sds{
    font-size: 30px;
   }
+#try {
+  font-size: 70px;
+  text-align: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #0077ff;
+  
+}
+
+#WELASS:hover {
+  animation: glow-yellow 2s ease-in-out infinite, float 5s ease-in-out infinite;
+    background: #ffc107;
+}
+@keyframes glow-yellow {
+  0%, 100% {
+    box-shadow: 0 0 5px #ffee00, 0 0 8px #ffee00;
+  }
+  50% {
+    box-shadow: 0 0 20px #ffc107, 0 0 38px #ffc107;
+  }
+}
 /* Responsive adjustments */
 
 @media screen and (max-width: 768px) {
@@ -235,7 +277,32 @@ html, body {
     display: none;
     font-size: 0px;
   }
+  .user-message {
+  font-size: 17px;
+  background-color: #7bc5f7;
+  align-self: flex-end;
+}
+.chat-box {
+  flex: 1;
+  padding: 20px 5px;
+}
   .navbar {
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+  .nav-links {
+        width: 100%;
+        justify-content: center;
+        gap: 3px;
+        flex-wrap: wrap;
+    }
+    .nav-links a {
+        font-size: 16px !important; /* Override the desktop rule */
+        margin-top: -4%;
+        padding: 5px 8px;
+    }
+  
+  #try {
     display: none;
   }
   .sds{
@@ -253,13 +320,15 @@ html, body {
   }
  .sd{
 height: 40px;
+margin-top: 2%;
  text-align: center;
   font-size: 0px;
  }
   /* Make chatbot take more vertical space */
   .chat-container {
-    width: 100%;
-    height: 90vh;
+    width: 90%;
+    height: 75vh;
+    margin: 0 auto;
     border-radius: 0;
   }
 
@@ -268,13 +337,31 @@ height: 40px;
     font-size: 1rem;
     padding: 10px;
   }
-
+.chat-box {
+  width: 100%;
+}
   .input-area button {
-    padding: 10px 15px;
+    padding: 10px 10px;
     font-size: 0.9rem;
   }
-  
+  .logo {
+    margin-top: -3%;
+        height: 100px;
+    }
+
+    #titu {
+        font-size: 60px;
+        margin-top: 4%;
+    }
+
+.input-area input[type="text"] {
+  width: 70%;
+  flex: 1;
+  padding: 14px 18px;
+  font-size: 1.1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.mc {
-  display: none;
+
 }

@@ -1,0 +1,247 @@
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1%;
+   
+  background-color: white;
+   width: 100%;
+    z-index: 9999;
+  align-items: center;
+  justify-content: space-between; /* logo on left, links on right */
+  padding: 3px 6%;
+  box-sizing: border-box;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 1); /* more natural shadow */
+   border-color: #113D5C;
+  
+}
+.video-container {
+  z-index: 1;
+  position: relative;
+  width: 80%;       /* fits nicely */
+  margin: 2% auto;  /* centers horizontally */
+  overflow: hidden;
+  margin-left: 20%;
+}
+.video-containers {
+  
+  position: absolute;
+  margin-top: -51%;
+  width: 44%;       /* fits nicely */
+  z-index: 9999;
+  overflow: hidden;
+  margin-left: 57%;
+}
+
+
+video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+
+
+
+section {
+  position: relative; /* anchor point for absolute children */
+}
+
+#WELA, #WELAS, #WELASS {
+  position: absolute;
+  z-index: 2;
+}
+@keyframes float {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-30px); }
+  100% { transform: translateY(0px); }
+}
+
+#WELA {
+  animation: glow-blues 2s ease-in-out infinite, float 5s ease-in-out infinite;
+  top: 1%;   
+  left: 5%;
+  color: rgb(0, 0, 0);
+  font-size: 5rem;
+  font-weight: bold;
+}
+
+#WELAS {
+  animation: float 5s ease-in-out infinite;
+  top: 27%;
+  left: 5%;
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#WELASS {
+  animation: glow-blue 2s ease-in-out infinite, float 5s ease-in-out infinite;
+  top: 75%;
+  left: 5%;
+  color: black;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes glow-blue {
+  0%, 100% {
+    box-shadow: 0 0 5px #00c3ff, 0 0 8px #00c2fd;
+  }
+  50% {
+    box-shadow: 0 0 20px #0077ff, 0 0 38px #0077ff;
+  }
+}
+@keyframes glow-blues {
+  0%, 100% {
+    text-shadow: 0 0 5px #00c3ff, 0 0 8px #00c2fd;
+  }
+  50% {
+    text-shadow: 0 0 20px #0077ff, 0 0 38px #0077ff;
+  }
+}
+.logo {
+  height: 80px;
+ 
+display: inline-block;
+display: flex;
+  
+}
+#titu {
+  margin-left: -4%;
+  margin-top: 6%;
+  font-size: 50px;
+}
+.nav-links {
+  display: flex;
+  gap: 30px;
+  margin: 0;
+}
+.nav-links a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+
+  font-family: Verdana;
+  font-size: 20px;
+  transition: color 0.3s;
+}
+.nav-links a:hover {
+  color: #113D5C;
+}
+
+
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    
+    
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 50px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.about-image img {
+    width: 650px;
+    margin-top: -5%;
+    max-width: 100%;
+    margin-left: -18%;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.about-text {
+  margin-left: -5%;
+justify-content: center;
+    flex: 1;
+    margin-top: -3%;
+}
+
+.about-text h1 {
+    font-size: 2.9rem;
+    margin-bottom: 15px;
+    color: #0077ff;
+      margin-top: -7%;
+}
+
+.about-text p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    margin-top: -2%;
+}
+
+/* Button */
+.home-button {
+
+  
+    background: #0077ff;
+    color: #222;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.home-button:hover {
+    background: #ffc107;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .about-text h1 {
+        font-size: 2rem;
+        text-align: left;
+        margin-left: 4.5%;
+    }
+ .navbar {
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+  .nav-links {
+        width: 100%;
+        justify-content: center;
+        gap: 3px;
+        flex-wrap: wrap;
+    }
+    .nav-links a {
+        font-size: 16px !important; /* Override the desktop rule */
+        margin-top: -4%;
+        padding: 5px 8px;
+    }
+    .about-text p {
+      text-align: justify;
+       
+        margin-left: 4.5%;
+        font-size: 1rem;
+    }
+.logo {
+    margin-top: -3%;
+        height: 100px;
+    }
+
+    #titu {
+        font-size: 60px;
+        margin-top: 4%;
+    }
+    .about-image img {
+        width: 100%;
+        margin-top: 1%;
+        margin-left: 0.5%;
+    }
+}

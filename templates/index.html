@@ -16,8 +16,12 @@
   </div>
   <div class="nav-links">
     <a href="#">HOME</a>
-    <a href="#">ABOUT US</a>
-    <a href="#">LOGIN</a>
+    <a href="{{ url_for('about') }}">ABOUT US</a>
+
+   
+    <a href="{{ url_for('logout') }}">LOGOUT</a>
+
+ 
     <a href="#">CONTACT US</a>
   </div>
 </section>
@@ -30,34 +34,42 @@
     </video>
   </div>
   <h1 id="WELA">HI! I AM WARRIORA </h1>
+  
   <p id="WELAS">an artificial intelligence assistant created by Vishesh Kannaujiya. I am a highly advanced <br>language model designed to assist and communicate with humans in a clear and concise <br> manner. I have been trained on a vast amount of text data,enabling me to provide <br> accurate and informative responses to a wide range of questions and topics. My <br> capabilities include generating human-like text,  answering questions, and even creating <br> content such as articles, emails, and chatbot conversations. I am constantly learning and <br> improving my abilities through machine learning algorithms and  natural language <br> processing techniques. My primary goal is to assist users by providing relevant and <br> helpful information, answering their questions, and completing tasks to the best of my <br> abilities. I am designed to brbe knowledgeable, accurate,  and efficient, and I strive to <br>maintain a professional and respectful tone in all of my interactions. Whether you need <br>
   help with a specific task, require research on a particular topic, or simply want to engage <br>in a conversation, I am here to assist you.</p>
-  <button id="WELASS">READ MORE</button>
+  <a href="{{ url_for('about') }}"><button id="WELASS"> READ MORE</button></a>
+  
+  <hr color="#00c2fd">
+  <h1 id="try">Try Warriora Now</h1>
 </section>
 
 <section>
   <div class="chat-container">
-    <div class="chat-header">Welcome to Warriora</div>
+    <div class="chat-header">Hey  {% if session.get('username') %}
+             {{ session['username'] }} , Welcome to Warriora
+        {% endif %}</div>
     <div class="chat-box" id="chat-box">
-      {% if messages %}
-        {% for msg in messages %}
-          <div class="message {{ 'user-message' if msg.sender == 'user' else 'bot-message' }}">
-            {{ msg.text|replace('\n','<br>')|safe }}
-          </div>
-        {% endfor %}
-      {% endif %}
+      
+     
+
     </div>
 
     <form id="chat-form" class="input-area">
-      <input type="text" id="message-input" placeholder="Type your message..." required autocomplete="off" />
+      <input type="text" id="message-input" placeholder="Ask Anything..." required autocomplete="off" />
       <button type="submit" class="sd">Send</button>
-      <button type="button" id="voice-btn" class="mc">🎤</button>
+      <button type="button" id="voice-btn" class="sd">🎤</button>
       <button type="button" id="speak-btn" class="sd">🔊</button>
       <button type="button" id="stop-btn" disabled class="sds">✋🏻</button>
     </form>
   </div>
 </section>
 
+<div class="video-containers">
+    <video autoplay muted loop>
+      <source src="{{ url_for('static', filename='vp.mp4') }}" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const chatBox = document.getElementById("chat-box");
